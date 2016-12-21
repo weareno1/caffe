@@ -6,6 +6,31 @@
 Caffe is a deep learning framework made with expression, speed, and modularity in mind.
 It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.eecs.berkeley.edu)) and community contributors.
 
+
+## Installation
+### dependence 
+opencv 2.4.13 built with cuda 8.0 support 
+most of the machines can bypass following steps to reinstall opencv
+1. download opencv-2.4.13 source code
+2. `cd opencv-2.4.13 &&  mkdir release && cd release`
+3. `cmake -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-8.0" -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-2.4.13 ..`
+4. `make -j6`
+5. `make install`
+
+### caffe 
+1. clone this repo 
+2. `cd caffe && mkdir build && cd build`
+3. `cmake -D CMAKE_PREFIX_PATH="/usr/local/opencv-2.4.13;/usr/local/cudnn-v5" -D CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-8.0"  -D BLAS=open ..`
+4. `make -j6`
+
+### pycaffe
+add 
+`export PYTHONPATH=$PYTHONPATH:/usr/local/opencv-2.4.13/lib/python2.7/site-packages`
+`export PYTHONPATH=$PYTHONPATH:$HOME/caffe/python`
+to  .bashrc or .zshrc
+
+
+
 Check out the [project site](http://caffe.berkeleyvision.org) for all the details like
 
 - [DIY Deep Learning for Vision with Caffe](https://docs.google.com/presentation/d/1UeKXVgRvvxg9OUdh_UiC5G71UMscNPlvArsWER41PsU/edit#slide=id.p)

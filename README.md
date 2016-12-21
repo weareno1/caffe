@@ -9,7 +9,8 @@ It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.e
 
 ## Installation
 ### dependence 
-opencv 2.4.13 built with cuda 8.0 support 
+opencv 2.4.13 built with cuda 8.0 support
+
 most of the machines can bypass following steps for installing opencv
 
 1. download opencv-2.4.13 source code

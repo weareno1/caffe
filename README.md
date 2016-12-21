@@ -26,8 +26,10 @@ most of the machines can bypass following steps to reinstall opencv
 
 ### pycaffe
 add 
-`export PYTHONPATH=$PYTHONPATH:/usr/local/opencv-2.4.13/lib/python2.7/site-packages`
-`export PYTHONPATH=$PYTHONPATH:$HOME/caffe/python`
+```
+ export PYTHONPATH=$PYTHONPATH:/usr/local/opencv-2.4.13/lib/python2.7/site-packages
+ export PYTHONPATH=$PYTHONPATH:$HOME/caffe/python
+```
 to  .bashrc or .zshrc
 
 

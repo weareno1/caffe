@@ -11,6 +11,7 @@ It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.e
 ### dependence 
 opencv 2.4.13 built with cuda 8.0 support 
 most of the machines can bypass following steps to reinstall opencv
+
 1. download opencv-2.4.13 source code
 2. `cd opencv-2.4.13 &&  mkdir release && cd release`
 3. `cmake -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-8.0" -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-2.4.13 ..`

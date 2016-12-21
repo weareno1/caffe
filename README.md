@@ -10,7 +10,7 @@ It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.e
 ## Installation
 ### dependence 
 opencv 2.4.13 built with cuda 8.0 support 
-most of the machines can bypass following steps to reinstall opencv
+most of the machines can bypass following steps for installing opencv
 
 1. download opencv-2.4.13 source code
 2. `cd opencv-2.4.13 &&  mkdir release && cd release`
@@ -33,6 +33,7 @@ add
 to  .bashrc or .zshrc
 
 
+## Official Documentation
 
 Check out the [project site](http://caffe.berkeleyvision.org) for all the details like
 

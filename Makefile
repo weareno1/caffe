@@ -176,6 +176,7 @@ ifneq ($(CPU_ONLY), 1)
 	INCLUDE_DIRS += $(CUDA_INCLUDE_DIR)
 	LIBRARY_DIRS += $(CUDA_LIB_DIR)
 	LIBRARIES := cudart cublas curand
+	LDFLAGS += -Wl,-rpath,$(CUDA_DIR)/lib64
 endif
 
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
@@ -325,13 +326,19 @@ endif
 # cuDNN acceleration configuration.
 ifeq ($(USE_CUDNN), 1)
 	LIBRARIES += cudnn
+	LIBRARY_DIRS += $(CUDNN_DIR)/lib64
 	COMMON_FLAGS += -DUSE_CUDNN
+	INCLUDE_DIRS += /usr/local/cudnn-v5/include
+	LDFLAGS += -Wl,-rpath,'$(CUDNN_DIR)/lib64'
 endif
 
 # NCCL acceleration configuration
 ifeq ($(USE_NCCL), 1)
 	LIBRARIES += nccl
 	COMMON_FLAGS += -DUSE_NCCL
+	INCLUDE_DIRS += $(NCCL_DIR)/include
+	LIBRARY_DIRS += $(NCCL_DIR)/lib
+	LDFLAGS += -Wl,-rpath,'$(NCCL_DIR)/lib'
 endif
 
 # configure IO libraries
@@ -452,7 +459,7 @@ endif
 	py mat py$(PROJECT) mat$(PROJECT) proto runtest \
 	superclean supercleanlist supercleanfiles warn everything
 
-all: lib tools examples
+all: lib tools examples py
 
 lib: $(STATIC_NAME) $(DYNAMIC_NAME)
 

@@ -9,22 +9,13 @@ It is developed by Berkeley AI Research ([BAIR](http://bair.berkeley.edu))/The B
 
 ## Installation
 ### dependence 
-opencv 2.4.13 built with cuda 8.0 support
-
-most of the machines can bypass following steps for installing opencv
-
-1. download opencv-2.4.13 source code
-2. `cd opencv-2.4.13 &&  mkdir release && cd release`
-3. `cmake -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-8.0" -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-2.4.13 ..`
-4. `make -j6`
-5. `make install`
+all dependence are installed in /usr/local/
+contact OP if some packages misssing
 
 ### caffe 
 1. `clone this repo`
 2. `cd caffe`
 3. `make -j16` 
-4. `make py`
-### pycaffe
 
 ### merge BVLC/caffe
 1. `git check out master`

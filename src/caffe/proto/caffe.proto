@@ -364,6 +364,8 @@ message LayerParameter {
   optional ArgMaxParameter argmax_param = 103;
   optional BatchNormParameter batch_norm_param = 139;
   optional BiasParameter bias_param = 141;
+  optional CenterLossParameter center_loss_param = 147;
+  optional FlipParameter flip_param = 212;
   optional ConcatParameter concat_param = 104;
   optional ContrastiveLossParameter contrastive_loss_param = 105;
   optional ConvolutionParameter convolution_param = 106;
@@ -405,6 +407,8 @@ message LayerParameter {
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
   optional WindowDataParameter window_data_param = 129;
+  optional LargeMarginInnerProductParameter largemargin_inner_product_param = 202;
+  optional MarginInnerProductParameter margin_inner_product_param = 232;
 }
 
 // Message that stores parameters used to apply transformation
@@ -428,6 +432,15 @@ message TransformationParameter {
   optional bool force_color = 6 [default = false];
   // Force the decoded image to have 1 color channels.
   optional bool force_gray = 7 [default = false];
+  optional uint32 crop_w = 11 [default = 0];
+  optional uint32 crop_h = 12 [default = 0];
+  optional float min_scaling_factor = 20 [default = 0.75];
+  optional float max_scaling_factor = 21 [default = 1.5];
+  optional float rotation_angle_interval = 22 [default = 1];
+  optional bool contrast_adjustment = 23 [default = false];
+  optional bool smooth_filtering = 24 [default = false];
+  optional bool jpeg_compression = 25 [default = false];
+  optional bool display = 26 [default = false];
 }
 
 // Message that stores parameters shared by loss layers
@@ -670,6 +683,8 @@ message DataParameter {
   // Prefetch queue (Increase if data feeding bandwidth varies, within the
   // limit of device memory for GPU training)
   optional uint32 prefetch = 10 [default = 4];
+  optional uint32 crop_w = 11 [default = 0];
+  optional uint32 crop_h = 12 [default = 0];
 }
 
 message DropoutParameter {
@@ -1409,4 +1424,58 @@ message PReLUParameter {
   optional FillerParameter filler = 1;
   // Whether or not slope parameters are shared across channels.
   optional bool channel_shared = 2 [default = false];
+}
+
+message CenterLossParameter {
+  optional uint32 num_output = 1; // The number of outputs for the layer
+  optional FillerParameter center_filler = 2; // The filler for the centers
+  // The first axis to be lumped into a single inner product computation;
+  // all preceding axes are retained in the output.
+  // May be negative to index from the end (e.g., -1 for the last axis).
+  optional int32 axis = 3 [default = 1];
+}
+
+message FlipParameter {                                                                                                                                                                                             
+  optional bool flip_width = 1 [default = true];                                                                                                                                                                    
+  optional bool flip_height = 2 [default = false];                                                                                                                                                                  
+}
+
+message LargeMarginInnerProductParameter {
+  optional uint32 num_output = 1;
+  enum LargeMarginType {
+    SINGLE = 0;
+    DOUBLE = 1;
+    TRIPLE = 2;
+    QUADRUPLE = 3;
+  }
+  optional LargeMarginType type = 2 [default = SINGLE]; // m in the L-Softmax loss
+  optional FillerParameter weight_filler = 3; // The filler for the weight
+  optional int32 axis = 4 [default = 1];
+  optional float base = 5 [default = 1];
+  optional float gamma = 6 [default = 0];
+  optional float power = 7 [default = 1];
+  optional int32 iteration = 8 [default = 0];
+  optional float lambda_min = 9 [default = 0];
+}
+
+message MarginInnerProductParameter {
+  optional uint32 num_output = 1; // The number of outputs for the layer
+  enum MarginType {
+    SINGLE = 0;
+    DOUBLE = 1;
+    TRIPLE = 2;
+    QUADRUPLE = 3;
+  }
+  optional MarginType type = 2 [default = SINGLE]; 
+  optional FillerParameter weight_filler = 3; // The filler for the weight
+
+  // The first axis to be lumped into a single inner product computation;
+  // all preceding axes are retained in the output.
+  // May be negative to index from the end (e.g., -1 for the last axis).
+  optional int32 axis = 4 [default = 1];
+  optional float base = 5 [default = 1];
+  optional float gamma = 6 [default = 0];
+  optional float power = 7 [default = 1];
+  optional int32 iteration = 8 [default = 0];
+  optional float lambda_min = 9 [default = 0];
 }

@@ -20,17 +20,17 @@ most of the machines can bypass following steps for installing opencv
 5. `make install`
 
 ### caffe 
-1. clone this repo 
-2. `cd caffe
+1. `clone this repo`
+2. `cd caffe`
 3. `make -j16` 
-4. `make py
+4. `make py`
 ### pycaffe
 
 ### merge BVLC/caffe
-1. `git check out master
-2. `git pull https://github.com/BVLC/caffe.git master
-3. `resolve conflict
-4. `git push origin master
+1. `git check out master`
+2. `git pull https://github.com/BVLC/caffe.git master`
+3. `resolve conflict`
+4. `git push origin master`
 
 ## Official Documentation
 

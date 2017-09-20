@@ -21,18 +21,16 @@ most of the machines can bypass following steps for installing opencv
 
 ### caffe 
 1. clone this repo 
-2. `cd caffe && mkdir build && cd build`
-3. `cmake -D CMAKE_PREFIX_PATH="/usr/local/opencv-2.4.13;/usr/local/cudnn-v5" -D CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-8.0"  -D BLAS=open ..`
-4. `make -j6`
-
+2. `cd caffe
+3. `make -j16` 
+4. `make py
 ### pycaffe
-add 
-```
- export PYTHONPATH=$PYTHONPATH:/usr/local/opencv-2.4.13/lib/python2.7/site-packages
- export PYTHONPATH=$PYTHONPATH:$HOME/caffe/python
-```
-to  .bashrc or .zshrc
 
+### merge BVLC/caffe
+1. `git check out master
+2. `git pull https://github.com/BVLC/caffe.git master
+3. `resolve conflict
+4. `git push origin master
 
 ## Official Documentation
 

@@ -12,12 +12,12 @@ It is developed by Berkeley AI Research ([BAIR](http://bair.berkeley.edu))/The B
 all dependence are installed in /usr/local/
 contact OP if some packages misssing
 
-### caffe 
+### clone & install 
 1. `clone this repo`
 2. `cd caffe`
 3. `make -j16` 
 
-### merge BVLC/caffe
+## merge BVLC/caffe (if necessary)
 1. `git check out master`
 2. `git pull https://github.com/BVLC/caffe.git master`
 3. `resolve conflict`

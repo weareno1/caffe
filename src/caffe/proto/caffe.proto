@@ -409,6 +409,18 @@ message LayerParameter {
   optional WindowDataParameter window_data_param = 129;
   optional LargeMarginInnerProductParameter largemargin_inner_product_param = 202;
   optional MarginInnerProductParameter margin_inner_product_param = 232;
+  optional FocalLossParameter focal_loss_param = 10632;
+}
+
+message FocalLossParameter {
+  enum Type {
+	ORIGIN = 0;
+	LINEAR = 1;
+  }
+  optional Type type = 1 [default = ORIGIN];
+  optional float gamma = 2 [default = 2]; // The exponent
+  optional float alpha = 3 [default = 0.25];
+  optional float beta = 4 [default = 1.0];
 }
 
 // Message that stores parameters used to apply transformation

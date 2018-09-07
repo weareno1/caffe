@@ -121,3 +121,5 @@ TEST_GPUID := 0
 
 # enable pretty build (comment to see full commands)
 Q ?= @
+
+PROTOC := /usr/local/protobuf-3.5.2/bin/protoc

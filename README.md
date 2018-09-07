@@ -12,6 +12,10 @@ It is developed by Berkeley AI Research ([BAIR](http://bair.berkeley.edu))/The B
 all dependence are installed in /usr/local/
 contact OP if some packages misssing
 
+### use python3.x
+default use python2.x
+1. `cp Makefile.config.py3 -f Makefile.config`
+
 ### clone & install 
 1. `clone this repo`
 2. `cd caffe`
